@@ -9,7 +9,7 @@ Pause a [Pi coding agent](https://pi.dev) workflow when a developer decision is 
 - Supports free-form replies and multi-select questions.
 - Restricts answers to one configured Telegram user ID.
 - Keeps source files, conversation history, option previews, and reasoning out of Telegram.
-- Persists `/telegram-question on|off|status` mode changes without reloading Pi.
+- Persists `/telegram-ask on|off|status` mode changes without reloading Pi.
 - Reuses the local `@juicesharp/rpiv-ask-user-question` interface when Telegram is off.
 - Marks compatible Herdr integrations as blocked while awaiting a human response.
 
@@ -83,12 +83,12 @@ Alternatively, set `PI_TELEGRAM_BOT_TOKEN` in the environment that launches Pi. 
 ## Usage
 
 ```text
-/telegram-question on      # send developer questions to Telegram
-/telegram-question off     # use Pi's local questionnaire
-/telegram-question status  # show the active channel
+/telegram-ask on      # send developer questions to Telegram
+/telegram-ask off     # use Pi's local questionnaire
+/telegram-ask status  # show the active channel
 ```
 
-The older `telegram` and `local` values remain accepted as compatibility aliases. `/telegram-question-status` is also available as a status alias.
+The older `telegram` and `local` values remain accepted as compatibility aliases. `/telegram-ask-status` is also available as a status alias.
 
 When Telegram is on, answer with an inline button or reply directly to the bot's question. Cancel with the inline cancel button, `/cancel`, or Esc in Pi.
 

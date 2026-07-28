@@ -314,7 +314,7 @@ async function runLocalQuestionnaire(
 	return toolResult(responseEnvelope(answers, "Pi"), { answers, cancelled: false });
 }
 
-export default function telegramQuestion(pi: ExtensionAPI) {
+export default function telegramAsk(pi: ExtensionAPI) {
 	const localTool = captureLocalTool(pi);
 	pi.registerTool({
 		name: TOOL_NAME,
@@ -353,7 +353,7 @@ export default function telegramQuestion(pi: ExtensionAPI) {
 			const client = new TelegramClient(resolved.config);
 			const projectName = basename(ctx.cwd) || ctx.cwd;
 			const answers: QuestionAnswer[] = [];
-			ctx.ui.setStatus("telegram-question", "Waiting for Telegram");
+			ctx.ui.setStatus("telegram-ask", "Waiting for Telegram");
 			pi.events.emit("herdr:blocked", { active: true, label: "Waiting for Telegram" });
 			pi.events.emit("rpiv:ask-user:blocked", { active: true });
 
@@ -396,7 +396,7 @@ export default function telegramQuestion(pi: ExtensionAPI) {
 				if (ctx.hasUI) ctx.ui.notify(message, "error");
 				return toolResult(`Error: ${message}`, { answers, cancelled: true, error: "telegram" });
 			} finally {
-				ctx.ui.setStatus("telegram-question", undefined);
+				ctx.ui.setStatus("telegram-ask", undefined);
 				pi.events.emit("rpiv:ask-user:blocked", { active: false });
 				pi.events.emit("herdr:blocked", { active: false });
 			}
@@ -418,7 +418,7 @@ export default function telegramQuestion(pi: ExtensionAPI) {
 		ctx.ui.notify(`Developer questions use Telegram (token: ${resolved.tokenSource}, thread: ${thread})`, "info");
 	}
 
-	pi.registerCommand("telegram-question", {
+	pi.registerCommand("telegram-ask", {
 		description: "Toggle Telegram developer questions (on|off|status)",
 		handler: async (args, ctx) => {
 			const requested = args.trim().toLowerCase();
@@ -433,7 +433,7 @@ export default function telegramQuestion(pi: ExtensionAPI) {
 						? "local"
 						: undefined;
 			if (!mode) {
-				ctx.ui.notify("Usage: /telegram-question on|off|status", "warning");
+				ctx.ui.notify("Usage: /telegram-ask on|off|status", "warning");
 				return;
 			}
 			writeStoredConfig({ ...readStoredConfig(), mode });
@@ -446,7 +446,7 @@ export default function telegramQuestion(pi: ExtensionAPI) {
 		},
 	});
 
-	pi.registerCommand("telegram-question-status", {
+	pi.registerCommand("telegram-ask-status", {
 		description: "Show the active developer-question channel without revealing credentials",
 		handler: async (_args, ctx) => showStatus(ctx),
 	});
