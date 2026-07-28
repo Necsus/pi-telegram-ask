@@ -119,6 +119,22 @@ Test the package in Pi without installing it globally:
 pi -e .
 ```
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+## Publishing
+
+Publishing is restricted to maintainers. GitHub releases trigger `.github/workflows/publish.yml`, which verifies that a `vX.Y.Z` release tag matches `package.json`, reruns the checks, and publishes through the protected `npm-release` environment using npm Trusted Publishing (OIDC) and provenance.
+
+Because npm Trusted Publishing can only be configured for an existing package, the first publication of `@necsus/pi-telegram-ask` must be bootstrapped manually by a maintainer with 2FA. After that first publication, configure its npm trusted publisher with:
+
+- organization or user: `Necsus`
+- repository: `pi-telegram-ask`
+- workflow filename: `publish.yml`
+- environment: `npm-release`
+- allowed action: `npm publish`
+
+After verifying the OIDC publication flow, configure npm publishing access to require 2FA and disallow token-based publication.
+
 ## Dependency attribution
 
 Local questionnaire behavior is provided by [`@juicesharp/rpiv-ask-user-question`](https://www.npmjs.com/package/@juicesharp/rpiv-ask-user-question), used under its MIT license and bundled for reliable Pi package installation.
