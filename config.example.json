@@ -1,0 +1,6 @@
+{
+  "mode": "local",
+  "chatId": "YOUR_TELEGRAM_CHAT_ID",
+  "userId": "YOUR_TELEGRAM_USER_ID",
+  "pollTimeoutSeconds": 45
+}
