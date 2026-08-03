@@ -38,7 +38,7 @@
     "pack:check": "npm pack --dry-run"
   },
   "dependencies": {
-    "@juicesharp/rpiv-ask-user-question": "2.1.0"
+    "@juicesharp/rpiv-ask-user-question": "2.3.0"
   },
   "bundledDependencies": [
     "@juicesharp/rpiv-ask-user-question"
