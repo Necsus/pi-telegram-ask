@@ -40,9 +40,11 @@
   "dependencies": {
     "@juicesharp/rpiv-ask-user-question": "2.15.0"
   },
-  "bundledDependencies": [
-    "@juicesharp/rpiv-ask-user-question"
-  ],
+  "overrides": {
+    "@earendil-works/pi-coding-agent": {
+      "undici": "8.12.2"
+    }
+  },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
     "typebox": "*"

@@ -137,7 +137,7 @@ After verifying the OIDC publication flow, configure npm publishing access to re
 
 ## Dependency attribution
 
-Local questionnaire behavior is provided by [`@juicesharp/rpiv-ask-user-question`](https://www.npmjs.com/package/@juicesharp/rpiv-ask-user-question), used under its MIT license and bundled for reliable Pi package installation.
+Local questionnaire behavior is provided by [`@juicesharp/rpiv-ask-user-question`](https://www.npmjs.com/package/@juicesharp/rpiv-ask-user-question), used under its MIT license and installed by npm as a regular dependency.
 
 ## License
 
