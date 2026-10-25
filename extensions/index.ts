@@ -2,6 +2,7 @@ import type {
 	AgentToolUpdateCallback,
 	ExtensionAPI,
 	ExtensionContext,
+	ExtensionToolContext,
 	ToolDefinition,
 } from "@earendil-works/pi-coding-agent";
 import { chmodSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
@@ -274,7 +275,7 @@ async function runLocalQuestionnaire(
 	params: Params,
 	signal: AbortSignal | undefined,
 	onUpdate: AgentToolUpdateCallback<unknown> | undefined,
-	ctx: ExtensionContext,
+	ctx: ExtensionToolContext,
 ) {
 	const allQuestionsUseOriginalUi = params.questions.every((question) => (question.options?.length ?? 0) >= 2);
 	if (allQuestionsUseOriginalUi) {
